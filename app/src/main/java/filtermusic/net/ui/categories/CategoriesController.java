@@ -1,11 +1,9 @@
 package filtermusic.net.ui.categories;
 
 import android.content.Context;
-import android.util.Log;
-
-import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -75,7 +73,7 @@ public class CategoriesController implements DataProvider.RadioListRetrievedList
         return mLastSelectedCategory;
     }
 
-    private void updateCategories(ImmutableList<Radio> radioImmutableList) {
+    private void updateCategories(List<Radio> radioImmutableList) {
         mCategories.clear();
         Map<String, List<Radio>> categoryMap = new LinkedHashMap<>();
         for (Radio radio : radioImmutableList) {
@@ -112,7 +110,7 @@ public class CategoriesController implements DataProvider.RadioListRetrievedList
 
     @Override
     public void onRadioListRetrieved(List<Radio> radios) {
-        updateCategories(ImmutableList.copyOf(radios));
+        updateCategories(Collections.unmodifiableList(radios));
     }
 
     @Override

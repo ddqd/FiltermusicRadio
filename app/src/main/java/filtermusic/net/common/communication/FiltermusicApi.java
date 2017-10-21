@@ -18,7 +18,7 @@ public class FiltermusicApi {
 
     public FiltermusicService createFromRestAdapter() {
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://filtermusic.net")
+                .setEndpoint("https://filtermusic.net/")
                 .setConverter(new FeedXmlParser())
                 .build();
 

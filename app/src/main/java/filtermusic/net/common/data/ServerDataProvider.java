@@ -2,8 +2,7 @@ package filtermusic.net.common.data;
 
 import android.util.Log;
 
-import com.google.common.collect.ImmutableList;
-
+import java.util.Collections;
 import java.util.List;
 
 import filtermusic.net.common.communication.FiltermusicApi;
@@ -43,7 +42,7 @@ import rx.schedulers.Schedulers;
                     @Override
                     public void onNext(List<Radio> radios) {
                         Log.d(LOG_TAG, "radios: " + radios.size());
-                        listener.onRadioListRetrieved(ImmutableList.copyOf(radios));
+                        listener.onRadioListRetrieved(Collections.unmodifiableList(radios));
                     }
                 });
 

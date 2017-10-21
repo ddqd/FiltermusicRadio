@@ -2,7 +2,7 @@ package filtermusic.net.ui.details;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +21,7 @@ import filtermusic.net.player.PlayerController;
 /**
  * Activity used to display information about a radio.
  */
-public class RadioDetailActivity extends ActionBarActivity implements PlayerController.PlayerListener {
+public class RadioDetailActivity extends AppCompatActivity implements PlayerController.PlayerListener {
 
     private static final String LOG_TAG = RadioDetailActivity.class.getSimpleName();
 

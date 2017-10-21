@@ -3,6 +3,7 @@ apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    google()
 }
 
 buildscript {
@@ -29,12 +30,12 @@ android {
             keyPassword RELEASE_KEY_PASSWORD
         }
     }
-    compileSdkVersion 21
-    buildToolsVersion '20.0.0'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "filtermusic.net"
-        minSdkVersion 11
-        targetSdkVersion 20
+        minSdkVersion 15
+        targetSdkVersion 26
         versionCode 11
         versionName "1.0.0"
 
@@ -46,15 +47,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions 'tier'
     productFlavors {
         dev {
             applicationId "filtermusic.dev"
+            dimension 'tier'
         }
         hockeyApp {
             applicationId "filtermusic.test"
+            dimension 'tier'
         }
         live {
             signingConfig signingConfigs.release
+            dimension 'tier'
         }
     }
     packagingOptions {
@@ -64,20 +69,21 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-v4:+'
-    compile 'com.android.support:appcompat-v7:21.0.2'
-    compile 'com.google.android.gms:play-services:6.5.87'
-    compile 'com.google.guava:guava:18.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.google.android.gms:play-services-base:11.4.2'
+    compile 'com.google.android.gms:play-services-analytics:11.4.2'
     compile 'com.squareup.dagger:dagger:1.2.2'
-    compile 'com.squareup.dagger:dagger-compiler:1.2.2'
-    compile 'com.squareup.retrofit:retrofit:1.6.1'
+    annotationProcessor 'com.squareup.dagger:dagger-compiler:1.2.2'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.netflix.rxjava:rxjava-core:0.20.4'
     compile 'com.netflix.rxjava:rxjava-android:0.20.4'
     compile 'javax.inject:javax.inject:1@jar'
-    compile 'com.jakewharton:butterknife:6.0.0'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.j256.ormlite:ormlite-core:4.48'
     compile 'com.j256.ormlite:ormlite-android:4.48'
-    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.annimon:stream:1.1.6'
     compile('com.crashlytics.sdk.android:crashlytics:2.2.0@aar') {
         transitive = true;
     }

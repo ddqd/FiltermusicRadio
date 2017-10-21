@@ -4,8 +4,9 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
+import com.annimon.stream.Collectors;
+import com.annimon.stream.Stream;
+import com.annimon.stream.function.Function;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -52,7 +53,7 @@ import rx.schedulers.Schedulers;
      * Converts a list of {@link DbRadio} to {@link Radio}
      */
     private List<Radio> toRadios(final List<DbRadio> dbRadios) {
-        return Lists.transform(dbRadios, new Function<DbRadio, Radio>() {
+        return Stream.of(dbRadios).map(new Function<DbRadio, Radio>() {
             @Override
             public Radio apply(DbRadio dbRadio) {
                 return new Radio(
@@ -60,7 +61,7 @@ import rx.schedulers.Schedulers;
                         dbRadio.getDescription(), dbRadio.getCategory(), dbRadio.getImageUrl(),
                         dbRadio.isFavorite(), dbRadio.getPlayedDate());
             }
-        });
+        }).collect(Collectors.<Radio>toList());
     }
 
     /**

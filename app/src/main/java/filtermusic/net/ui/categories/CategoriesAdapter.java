@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import filtermusic.net.R;
 import filtermusic.net.common.model.Category;
 
@@ -53,13 +53,13 @@ import filtermusic.net.common.model.Category;
     }
 
     static class ViewHolder {
-        @InjectView(R.id.title)
+        @BindView(R.id.title)
         TextView name;
-        @InjectView(R.id.stations)
+        @BindView(R.id.stations)
         TextView stations;
 
         public ViewHolder(View view) {
-            ButterKnife.inject(this, view);
+            ButterKnife.bind(this, view);
         }
     }
 }

@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import filtermusic.net.R;
 import filtermusic.net.common.model.Radio;
 
@@ -53,13 +52,13 @@ import filtermusic.net.common.model.Radio;
     }
 
     static class ViewHolder {
-        @InjectView(R.id.radio_title)
+        @BindView(R.id.radio_title)
         TextView title;
-        @InjectView(R.id.radio_info)
+        @BindView(R.id.radio_info)
         TextView radioInfo;
 
         public ViewHolder(View view) {
-            ButterKnife.inject(this, view);
+            ButterKnife.bind(this, view);
         }
     }
 }

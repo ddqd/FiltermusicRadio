@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import filtermusic.net.R;
 import filtermusic.net.common.model.Radio;
 
@@ -60,13 +60,13 @@ public class RadiosAdapter extends ArrayAdapter<Radio> {
     }
 
     static class ViewHolder {
-        @InjectView(R.id.radio_title)
+        @BindView(R.id.radio_title)
         TextView title;
-        @InjectView(R.id.radio_info)
+        @BindView(R.id.radio_info)
         TextView lastPlayed;
 
         public ViewHolder(View view) {
-            ButterKnife.inject(this, view);
+            ButterKnife.bind(this, view);
         }
     }
 }
