@@ -28,3 +28,5 @@ local.properties
 
 #Log Files
 *.log
+
+.DS_Store
